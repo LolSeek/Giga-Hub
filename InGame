@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Giga Hub",
+   Name = "Giga Hub (INGAME)",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Rayfield Interface Suite",
    LoadingSubtitle = "by Sirius",
@@ -32,4 +32,31 @@ local Window = Rayfield:CreateWindow({
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
       Key = {"RealGiga"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
+})
+
+local Player = Window:CreateTab("LocalPlayer", 4483362458) -- Title, Image
+local Hubs = Window:CreateTab("Hubs", 4483362458) -- Title, Image
+local Other = Window:CreateTab("Other", 4483362458) -- Title, Image
+
+local DestroyRayfield = Other:CreateButton({
+   Name = "Destroy the interface",
+   Callback = function()
+   Rayfield:Destroy()
+   end,
+})
+
+local GuidingSploit = Hubs:CreateButton({
+   Name = "Guiding Sploit by AROxMBUSH",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Teilsthebfdifan/Guidingsploit/refs/heads/main/Protected_7043316053291658.txt"))()
+   end,
+})
+
+local EnableJump = Player:CreateToggle({
+   Name = "Enable Jump",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.Players.LocalPlayer.Character:SetAttribute("CanJump", Value)
+   end,
 })
